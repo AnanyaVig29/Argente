@@ -1,0 +1,257 @@
+.shipping-header {
+  background: linear-gradient(135deg, var(--primary-brown) 0%, var(--secondary-brown) 100%);
+  padding: var(--spacing-2xl) 0;
+  color: var(--white);
+}
+
+.shipping-header h1 {
+  color: var(--white);
+  text-align: center;
+  margin-bottom: var(--spacing-xl);
+}
+
+.checkout-progress {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-lg);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.progress-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-xs);
+  flex: 1;
+  position: relative;
+}
+
+.progress-step span {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.125rem;
+  border: 2px solid transparent;
+}
+
+.progress-step p {
+  color: var(--light-beige);
+  font-size: 0.875rem;
+  margin: 0;
+}
+
+.progress-step.completed span,
+.progress-step.active span {
+  background-color: var(--white);
+  color: var(--primary-brown);
+}
+
+.progress-step.active span {
+  border-color: var(--white);
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.2);
+}
+
+.progress-step.completed p,
+.progress-step.active p {
+  color: var(--white);
+  font-weight: 600;
+}
+
+.shipping-layout {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: var(--spacing-xl);
+  margin: var(--spacing-3xl) 0;
+}
+
+/* Shipping Form */
+.shipping-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl);
+}
+
+.form-section {
+  background-color: var(--white);
+  padding: var(--spacing-xl);
+  border-radius: 8px;
+  box-shadow: var(--shadow-sm);
+}
+
+.form-section h2 {
+  font-size: 1.5rem;
+  margin-bottom: var(--spacing-lg);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-md);
+}
+
+.shipping-options {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.shipping-option {
+  display: flex;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md);
+  border: 2px solid var(--beige);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.shipping-option:hover {
+  border-color: var(--primary-brown);
+  background-color: var(--light-beige);
+}
+
+.shipping-option.selected {
+  border-color: var(--primary-brown);
+  background-color: rgba(107, 68, 35, 0.05);
+}
+
+.shipping-option input[type="radio"] {
+  margin-top: 4px;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  accent-color: var(--primary-brown);
+}
+
+.option-content {
+  flex: 1;
+}
+
+.option-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-xs);
+}
+
+.option-name {
+  font-weight: 600;
+  color: var(--dark-text);
+  font-size: 1.05rem;
+}
+
+.option-price {
+  font-weight: 700;
+  color: var(--primary-brown);
+  font-size: 1.125rem;
+}
+
+.option-delivery {
+  color: var(--light-text);
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.form-actions {
+  display: flex;
+  gap: var(--spacing-md);
+  justify-content: space-between;
+}
+
+.form-actions .btn {
+  flex: 1;
+}
+
+/* Order Summary */
+.order-summary {
+  position: sticky;
+  top: 100px;
+  height: fit-content;
+}
+
+.delivery-info {
+  display: flex;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md);
+  background-color: var(--light-beige);
+  border-radius: 8px;
+  margin-top: var(--spacing-lg);
+}
+
+.delivery-info svg {
+  color: var(--primary-brown);
+  flex-shrink: 0;
+}
+
+.delivery-info strong {
+  display: block;
+  color: var(--dark-text);
+  margin-bottom: 4px;
+}
+
+.delivery-info p {
+  color: var(--medium-text);
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .shipping-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .order-summary {
+    position: static;
+  }
+}
+
+@media (max-width: 768px) {
+  .checkout-progress {
+    gap: var(--spacing-sm);
+  }
+
+  .progress-step span {
+    width: 36px;
+    height: 36px;
+    font-size: 1rem;
+  }
+
+  .progress-step p {
+    font-size: 0.75rem;
+  }
+
+  .form-section {
+    padding: var(--spacing-md);
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .form-actions {
+    flex-direction: column-reverse;
+  }
+}
+
+@media (max-width: 480px) {
+  .shipping-header {
+    padding: var(--spacing-lg) 0;
+  }
+
+  .checkout-progress {
+    gap: var(--spacing-xs);
+  }
+
+  .progress-step p {
+    display: none;
+  }
+}
