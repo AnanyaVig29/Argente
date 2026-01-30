@@ -23,9 +23,9 @@ const Home = () => {
         <div className="container">
           <div className="about-grid">
             <div className="about-image slide-in">
-              <img 
-                src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=800&q=80" 
-                alt="Argenté Fashion" 
+              <img
+                src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=800&q=80"
+                alt="Argenté Fashion"
               />
             </div>
             <div className="about-content">
@@ -67,7 +67,7 @@ const Home = () => {
           <p className="text-center section-subtitle">
             The principles that guide everything we do
           </p>
-          
+
           <div className="values-grid">
             <div className="value-card">
               <div className="value-icon">
@@ -133,13 +133,13 @@ const Home = () => {
           <p className="text-center section-subtitle">
             Discover your perfect style
           </p>
-          
+
           <div className="categories-grid">
             <Link to="/collection?category=shirts" className="category-card">
               <div className="category-image">
-                <img 
-                  src="https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=600&q=80" 
-                  alt="Shirts Collection" 
+                <img
+                  src="https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=800&q=80"
+                  alt="Shirts Collection"
                 />
               </div>
               <div className="category-info">
@@ -150,9 +150,9 @@ const Home = () => {
 
             <Link to="/collection?category=t-shirts" className="category-card">
               <div className="category-image">
-                <img 
-                  src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600&q=80" 
-                  alt="T-Shirts Collection" 
+                <img
+                  src="https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=800&q=80"
+                  alt="T-Shirts Collection"
                 />
               </div>
               <div className="category-info">
@@ -163,9 +163,9 @@ const Home = () => {
 
             <Link to="/collection?category=kurtas" className="category-card">
               <div className="category-image">
-                <img 
-                  src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=600&q=80" 
-                  alt="Kurtas Collection" 
+                <img
+                  src="https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?w=800&q=80"
+                  alt="Kurtas Collection"
                 />
               </div>
               <div className="category-info">

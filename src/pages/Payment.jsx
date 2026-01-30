@@ -6,7 +6,7 @@ import './Payment.css';
 const Payment = () => {
   const navigate = useNavigate();
   const { getCartTotal, clearCart } = useCart();
-  
+
   const [paymentMethod, setPaymentMethod] = useState('card');
   const [formData, setFormData] = useState({
     cardNumber: '',
@@ -53,7 +53,7 @@ const Payment = () => {
 
   const validateUPIForm = () => {
     const newErrors = {};
-    
+
     const upiRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9]+$/;
     if (!upiRegex.test(formData.upiId)) {
       newErrors.upiId = 'Please enter a valid UPI ID';
@@ -112,15 +112,15 @@ const Payment = () => {
       setIsProcessing(false);
       clearCart();
       sessionStorage.removeItem('shippingInfo');
-      navigate('/order-success', { 
-        state: { 
+      navigate('/order-success', {
+        state: {
           orderDetails: {
             orderId: 'ARG' + Date.now(),
             total,
             paymentMethod,
             shippingInfo
           }
-        } 
+        }
       });
     }, 2000);
   };
@@ -130,6 +130,7 @@ const Payment = () => {
       <div className="payment-header">
         <div className="container">
           <h1>Payment Details</h1>
+          <p>Complete your secure checkout</p>
           <div className="checkout-progress">
             <div className="progress-step completed">
               <span>1</span>
@@ -152,7 +153,7 @@ const Payment = () => {
           <form onSubmit={handleSubmit} className="payment-form">
             <div className="form-section">
               <h2>Select Payment Method</h2>
-              
+
               <div className="payment-methods">
                 <label className={`payment-method ${paymentMethod === 'card' ? 'selected' : ''}`}>
                   <input
@@ -163,9 +164,10 @@ const Payment = () => {
                     onChange={(e) => setPaymentMethod(e.target.value)}
                   />
                   <div className="method-content">
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
-                      <line x1="1" y1="10" x2="23" y2="10"></line>
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                      <rect x="2" y="5" width="20" height="14" rx="2" ry="2"></rect>
+                      <line x1="2" y1="10" x2="22" y2="10"></line>
+                      <line x1="6" y1="15" x2="10" y2="15"></line>
                     </svg>
                     <span>Credit / Debit Card</span>
                   </div>
@@ -180,10 +182,10 @@ const Payment = () => {
                     onChange={(e) => setPaymentMethod(e.target.value)}
                   />
                   <div className="method-content">
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                      <polyline points="7 10 12 15 17 10"></polyline>
-                      <line x1="12" y1="15" x2="12" y2="3"></line>
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                      <circle cx="12" cy="12" r="10"></circle>
+                      <polyline points="8 12 12 16 16 12"></polyline>
+                      <line x1="12" y1="8" x2="12" y2="16"></line>
                     </svg>
                     <span>UPI Payment</span>
                   </div>
@@ -198,9 +200,11 @@ const Payment = () => {
                     onChange={(e) => setPaymentMethod(e.target.value)}
                   />
                   <div className="method-content">
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <line x1="12" y1="1" x2="12" y2="23"></line>
-                      <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                      <rect x="2" y="7" width="20" height="10" rx="2" ry="2"></rect>
+                      <circle cx="12" cy="12" r="3"></circle>
+                      <path d="M18.5 7.5l.5-1.5"></path>
+                      <path d="M5.5 7.5L5 6"></path>
                     </svg>
                     <span>Cash on Delivery</span>
                   </div>
@@ -211,7 +215,7 @@ const Payment = () => {
             {paymentMethod === 'card' && (
               <div className="form-section">
                 <h2>Card Information</h2>
-                
+
                 <div className="form-group">
                   <label htmlFor="cardNumber">Card Number *</label>
                   <input
@@ -278,7 +282,7 @@ const Payment = () => {
             {paymentMethod === 'upi' && (
               <div className="form-section">
                 <h2>UPI Information</h2>
-                
+
                 <div className="form-group">
                   <label htmlFor="upiId">UPI ID *</label>
                   <input

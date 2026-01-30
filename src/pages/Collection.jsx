@@ -80,14 +80,13 @@ const Collection = () => {
         </div>
       </div>
 
-      <div className="container">
-        <div className="collection-layout">
-          {/* Sidebar Filters */}
-          <aside className="filters-sidebar">
-            <div className="filter-section">
-              <h3>Categories</h3>
-              <div className="category-filters">
-                {categories.map(category => (
+      <div className="collection-layout">
+        {/* Sidebar Filters */}
+        <aside className="filters-sidebar">
+          <div className="filter-section">
+            <h3>Categories</h3>
+            <div className="category-filters">
+              {categories.map(category => (
                   <button
                     key={category.id}
                     className={`category-btn ${filters.category === category.id ? 'active' : ''}`}
@@ -196,7 +195,6 @@ const Collection = () => {
             )}
           </main>
         </div>
-      </div>
     </div>
   );
 };

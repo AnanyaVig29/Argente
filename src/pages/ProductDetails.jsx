@@ -14,13 +14,14 @@ const ProductDetails = () => {
   const { addToCart } = useCart();
   const { toggleWishlist, isInWishlist } = useWishlist();
   const { addToRecentlyViewed, recentlyViewed } = useRecentlyViewed();
-  
+
   const [selectedSize, setSelectedSize] = useState('');
   const [selectedImage, setSelectedImage] = useState(0);
   const [quantity, setQuantity] = useState(1);
   const [activeTab, setActiveTab] = useState('description');
   const [showNotification, setShowNotification] = useState(false);
   const [isZoomed, setIsZoomed] = useState(false);
+  const [showSizeGuide, setShowSizeGuide] = useState(false);
 
   useEffect(() => {
     if (product) {
@@ -74,8 +75,8 @@ const ProductDetails = () => {
           {/* Image Gallery */}
           <div className="product-gallery">
             <div className={`main-image ${isZoomed ? 'zoomed' : ''}`}>
-              <img 
-                src={product.images?.[selectedImage] || product.image} 
+              <img
+                src={product.images?.[selectedImage] || product.image}
                 alt={product.name}
                 onClick={() => setIsZoomed(!isZoomed)}
               />
@@ -104,7 +105,7 @@ const ProductDetails = () => {
           {/* Product Info */}
           <div className="product-info-section">
             <h1>{product.name}</h1>
-            
+
             <div className="product-rating">
               <div className="stars">
                 {[...Array(5)].map((_, i) => (
@@ -132,7 +133,7 @@ const ProductDetails = () => {
             <div className="size-selection">
               <div className="selection-header">
                 <label>Select Size</label>
-                <button className="size-guide-btn">Size Guide</button>
+                <button className="size-guide-btn" onClick={() => setShowSizeGuide(true)}>Size Guide</button>
               </div>
               <div className="size-options">
                 {product.sizes.map(size => (
@@ -180,38 +181,15 @@ const ProductDetails = () => {
               <button onClick={handleBuyNow} className="btn btn-secondary btn-large">
                 Buy Now
               </button>
-              <button 
+              <button
                 onClick={() => toggleWishlist(product)}
                 className={`btn-wishlist ${isInWishlist(product.id) ? 'active' : ''}`}
                 aria-label="Add to wishlist"
               >
-                <svg width="24" height="24" viewBox="0 0 24 24" fill={isInWishlist(product.id) ? "currentColor" : "none"} stroke="currentColor" strokeWidth="2">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill={isInWishlist(product.id) ? "currentColor" : "none"} stroke="currentColor" strokeWidth="2">
                   <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
                 </svg>
               </button>
-            </div>
-
-            {/* Trust Badges */}
-            <div className="trust-badges">
-              <div className="badge">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-                </svg>
-                <span>Free Shipping</span>
-              </div>
-              <div className="badge">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <polyline points="9 11 12 14 22 4"/>
-                  <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
-                </svg>
-                <span>Easy Returns</span>
-              </div>
-              <div className="badge">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                </svg>
-                <span>Secure Payment</span>
-              </div>
             </div>
           </div>
         </div>
@@ -219,19 +197,19 @@ const ProductDetails = () => {
         {/* Product Details Tabs */}
         <div className="product-tabs">
           <div className="tab-headers">
-            <button 
+            <button
               className={`tab-header ${activeTab === 'description' ? 'active' : ''}`}
               onClick={() => setActiveTab('description')}
             >
               Description
             </button>
-            <button 
+            <button
               className={`tab-header ${activeTab === 'features' ? 'active' : ''}`}
               onClick={() => setActiveTab('features')}
             >
               Features
             </button>
-            <button 
+            <button
               className={`tab-header ${activeTab === 'reviews' ? 'active' : ''}`}
               onClick={() => setActiveTab('reviews')}
             >
@@ -318,6 +296,73 @@ const ProductDetails = () => {
       {showNotification && (
         <div className="add-notification-fixed">
           ✓ Added to cart successfully
+        </div>
+      )}
+
+      {/* Size Guide Modal */}
+      {showSizeGuide && (
+        <div className="size-guide-modal" onClick={() => setShowSizeGuide(false)}>
+          <div className="size-guide-content" onClick={(e) => e.stopPropagation()}>
+            <div className="size-guide-header">
+              <h2>Size Guide</h2>
+              <button className="close-btn" onClick={() => setShowSizeGuide(false)}>×</button>
+            </div>
+            <div className="size-guide-body">
+              <p className="size-guide-note">
+                {product.category === 'kurtas' && !product.name.includes('Embroidered') ? 'Women: Bust, Waist, Hip, Length' : 'Men: Chest, Waist, Shoulder, Length'}
+              </p>
+              <div className="size-table-wrapper">
+                <table className="size-table">
+                  <thead>
+                    <tr>
+                      <th>Size</th>
+                      <th>{product.category === 'kurtas' && !product.name.includes('Embroidered') ? 'Bust' : 'Chest'}</th>
+                      <th>Waist</th>
+                      <th>{product.category === 'kurtas' && !product.name.includes('Embroidered') ? 'Hip' : 'Shoulder'}</th>
+                      <th>Length</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><strong>S</strong></td>
+                      <td>36-38</td>
+                      <td>30-32</td>
+                      <td>17-17.5</td>
+                      <td>27-28</td>
+                    </tr>
+                    <tr>
+                      <td><strong>M</strong></td>
+                      <td>38-40</td>
+                      <td>32-34</td>
+                      <td>17.5-18</td>
+                      <td>28-29</td>
+                    </tr>
+                    <tr>
+                      <td><strong>L</strong></td>
+                      <td>40-42</td>
+                      <td>34-36</td>
+                      <td>18-18.5</td>
+                      <td>29-30</td>
+                    </tr>
+                    <tr>
+                      <td><strong>XL</strong></td>
+                      <td>42-44</td>
+                      <td>36-38</td>
+                      <td>18.5-19</td>
+                      <td>30-31</td>
+                    </tr>
+                    <tr>
+                      <td><strong>XXL</strong></td>
+                      <td>44-46</td>
+                      <td>38-40</td>
+                      <td>19-19.5</td>
+                      <td>31-32</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
         </div>
       )}
     </div>
