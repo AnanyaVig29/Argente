@@ -204,18 +204,18 @@ Argente/
 
 ```css
 /* Primary Colors */
---primary-brown: #6B4423       /* Rich brown for primary elements */
---secondary-brown: #8B5A3C     /* Medium brown for accents */
---dark-text: #3D2817           /* Deep brown for headings & text */
+--primary-brown: #6B4423      /* Rich brown for primary elements */
+--secondary-brown: #8B5A3C    /* Medium brown for accents */
+--dark-text: #3D2817          /* Deep brown for headings & text */
 
 /* Neutral & Background Colors */
---beige: #D4C4B0               /* Warm beige for borders & dividers */
---light-beige: #E8DCC8         /* Soft beige for backgrounds */
---white: #FFFFFF               /* Pure white */
+--beige: #D4C4B0              /* Warm beige for borders & dividers */
+--light-beige: #E8DCC8        /* Soft beige for backgrounds */
+--white: #FFFFFF              /* Pure white */
 
 /* Text Colors */
---medium-text: #6B5A47         /* Medium brown for body text */
---light-text: #8B7355          /* Light brown for secondary text */
+--medium-text: #6B5A47        /* Medium brown for body text */
+--light-text: #8B7355         /* Light brown for secondary text */
 ```
 
 **Design Philosophy**: Sophisticated brown and beige tones create a premium, elegant aesthetic perfect for timeless fashion retail.
@@ -321,5 +321,3 @@ Crafted with ❤️ for premium fashion retail
 Made by [Ananya Vig](https://github.com/AnanyaVig29)
 
 </div>
- 
- 
